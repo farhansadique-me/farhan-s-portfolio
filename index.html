@@ -199,6 +199,8 @@ section{position:relative}
 .grid3 s{display:block;height:46px;border-radius:5px;background:#171a2a;text-decoration:none}
 
 /* ---------- contact ---------- */
+article.proj{scroll-margin-top:90px}
+#works{scroll-margin-top:60px}
 #contact{padding:14svh 0 8svh;position:relative}
 #contact::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 30%,rgba(157,180,255,.08),transparent 70%);pointer-events:none}
 .avail{display:inline-flex;align-items:center;gap:10px;font:400 11px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-bottom:22px}
@@ -349,6 +351,7 @@ var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* ===== placeholder content: edit these ===== */
 var NAME = 'FARHAN';
 var STACK = ['C','Python','Data Analysis','Artificial Intelligence','Microsoft Excel','Excel Dashboards','Microsoft PowerPoint','Presentation Skills','Public Speaking','Video Editing','Videography','Team Management','Project Management','Strategy','Entrepreneurship','Brand Ambassadorship','Spoken English'];
+var SVC_TO = ['#p0','#p4','#p1','#p2','#works','#p5'];
 var SERVICES = ['Design & creative strategy','Leadership & operations','Data science & AI','Public speaking & presentations','Video editing & videography','Brand & campus ambassadorship'];
 var PROJECTS = [
   {t:'Head of',i:'design',r:'Mistère',m:'Sep 2026 – Present · Part-time',d:'Head of Design and Creative Strategist. Includes the poster design for the 150-piece t-shirt order for SUST Career Club.',tag:'Mistère',img:'mistere.jpg'},
@@ -391,11 +394,11 @@ function row(list,cls){var h=list.concat(list).concat(list).concat(list).map(fun
 document.getElementById('marq').innerHTML=row(half,'')+row(half2,'rev');
 /* duplicate content is 4x; slide -50% loops cleanly */
 document.getElementById('svc').innerHTML=SERVICES.map(function(s,i){
-  return '<li><a href="#contact"><small>0'+(i+1)+'</small><span>'+s+'</span>'+arrow+'</a></li>'}).join('');
+  return '<li><a href="'+SVC_TO[i]+'"><small>0'+(i+1)+'</small><span>'+s+'</span>'+arrow+'</a></li>'}).join('');
 document.getElementById('projects').innerHTML=PROJECTS.map(function(p,i){
   var media=p.video?'<video src="'+p.video+'" '+(p.img?'poster="'+p.img+'" ':'')+'muted loop playsinline autoplay preload="metadata"></video>':
               p.img?'<img src="'+p.img+'" alt="'+p.r+'" loading="lazy">':'<span class="tag">'+p.tag+'</span>';
-  return '<article class="proj rv"><div class="shot'+((p.img||p.video)?' has':'')+'" data-i="'+i+'">'+media+'</div><div class="no">0'+(i+1)+' · '+p.m+'</div>'+
+  return '<article class="proj rv" id="p'+i+'"><div class="shot'+((p.img||p.video)?' has':'')+'" data-i="'+i+'">'+media+'</div><div class="no">0'+(i+1)+' · '+p.m+'</div>'+
   '<h3>'+p.t+' <em>'+p.i+'</em><br>'+p.r+'</h3><p>'+p.d+'</p></article>'}).join('');
 
 document.getElementById('works-grid').innerHTML=WORKS.map(function(w,i){
