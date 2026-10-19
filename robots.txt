@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://farhans-portfolio.sadikfs570.workers.dev/sitemap.xml
